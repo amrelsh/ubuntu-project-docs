@@ -45,6 +45,12 @@ the burden on tools only e.g. rendering documentation, yet it does not mean "no
 build-dependencies are needed" either. Code that is built into the resulting
 artifacts even without a dependency to another package in the final packages
 metadata shall be in main as well.
+
+When seed management is performed and component-mismatches reports are
+generated, any dependency of a package in `main` that is found to be in
+`universe` must go through the Main Inclusion Review (MIR) process before it
+can be promoted to `main`.
+
 This is the default for some ecosystems like rust and go, but also valid for
 e.g. C headers if they contain not just definitions but large amounts of
 active code that is built into the binaries.
