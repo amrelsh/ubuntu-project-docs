@@ -109,6 +109,36 @@ These instructions assume the request for sponsorship is in the form of a {term}
 
    See {ref}`how-to-review-a-merge-proposal` for general review details.
 
+1. Verify the upload contents:
+
+   It is important to verify that the upload contents are good and do not contain undesired changes, especially
+   the Debian tarball that has been generated: `<package>_<version>.debian.tar.xz`, since there is no control
+   of its contents on the server side.
+
+   Assume that you would like to upload version `12.0.0-1ubuntu5.4` of the package `libvirt` to Ubuntu Resolute 26.04,
+   and the latest version in the archive is `12.0.0-1ubuntu5.3`. Here are the instructions to generate the debdiff of the upload:
+
+   Pull the latest package from Resolute:
+
+    ```none
+    $ pull-lp-source libvirt resolute
+    ```
+
+   Run `debdiff` between the two `.dsc` files:
+
+    ```none
+    $ debdiff libvirt_12.0.0-1ubuntu5.3.dsc libvirt_12.0.0-1ubuntu5.4.dsc
+    ```
+
+   This shows the changes between `12.0.0-1ubuntu5.3` and `12.0.0-1ubuntu5.4`. It is important to make sure that
+   the changes look good and there are no unexpected changes.
+
+   To summarize the diff, you can use `diffstat`:
+
+    ```none
+    $ debdiff libvirt_12.0.0-1ubuntu5.3.dsc libvirt_12.0.0-1ubuntu5.4.dsc 2>/dev/null | diffstat
+    ```
+
 1. Sign the {file}`.changes` file:
 
     ```none
