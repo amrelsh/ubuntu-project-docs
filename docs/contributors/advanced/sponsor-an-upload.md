@@ -116,7 +116,7 @@ These instructions assume the request for sponsorship is in the form of a {term}
    of its contents on the server side.
 
    Assume that you would like to upload version `12.0.0-1ubuntu5.4` of the package `libvirt` to Ubuntu Resolute 26.04,
-   and the latest version in the archive is `12.0.0-1ubuntu5.3`. Here are the instructions to generate the debdiff of the upload:
+   and the latest version in the archive is `12.0.0-1ubuntu5.3`. Here are the instructions to generate the debdiff of the upload, which allows a quick cross check against what you expect from your work on git or the files directly:
 
    Pull the latest package from Resolute:
 
