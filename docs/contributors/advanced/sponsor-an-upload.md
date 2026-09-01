@@ -115,6 +115,11 @@ These instructions assume the request for sponsorship is in the form of a {term}
    the Debian tarball that has been generated: `<package>_<version>.debian.tar.xz`, since there is no control
    of its contents on the server side.
 
+Examples of issues you might catch may include, but are not limited to:
+- Generated files that you did not intend to be in the upload, like a `debian/cscope.out` file or a `debian/control.swp` from an editor => you see them in the diff, but did not expect them
+- The archive changed, your upload is not based on the most recent version => you see in diff conflicting or dropped changes
+- Files from development, unused but left behind, like a `debian/patch/foo.patch` that is not in `debian/series` and therefore silently stays behind doing nothing => you see its content in the diff, but did not expect them to be part of the upload
+
    Assume that you would like to upload version `12.0.0-1ubuntu5.4` of the package `libvirt` to Ubuntu Resolute 26.04,
    and the latest version in the archive is `12.0.0-1ubuntu5.3`. Here are the instructions to generate the debdiff of the upload, which allows a quick cross check against what you expect from your work on git or the files directly:
 
